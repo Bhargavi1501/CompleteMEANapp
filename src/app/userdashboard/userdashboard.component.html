@@ -1,0 +1,23 @@
+
+<div class="container-fluid">
+    <img [src]=userObj.userImgLink class="float-end" alt="..." height="100px" width="100px">
+    <h2 class="text-end text-primary">Welcome {{username}}</h2>
+
+    <button class="btn btn-secondary float-end" (click)="logout()">Logout</button>
+    
+    
+    <div class="row">
+        <div class="col sm-3">
+            <div class="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a routerLink="userprofile" class="navlink">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

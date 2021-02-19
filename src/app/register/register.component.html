@@ -1,0 +1,97 @@
+<p class="display-6 text-secondary text-center mt-5">User Registration Form</p>
+
+<div class="container bg-light">
+    <form class="row g-3 m-5 bg-light p-3" class="form" #formRef="ngForm"
+        (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+        <div class="row">
+            <!-- username -->
+            <div class="col-md-6 col-lg-6">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-control" autocomplete="off" ngModel
+                    required #username="ngModel">
+                <!-- validation for username -->
+                <span class="text-danger" *ngIf="(username.touched || formRef.submitted) && username.errors?.required">
+                    Username is required
+                </span>
+            </div>
+
+            <!-- password -->
+            <div class="col-lg-6 col-md-6">
+                <label for="pswd" class="form-label">Password</label>
+                <input type="password" name="password" id="pswd" class="form-control" autocomplete="off" ngModel
+                    required #password="ngModel">
+            </div>
+            <!-- validation for password -->
+            <span class="text-danger" *ngIf="(password.touched || formRef.submitted) && password.errors?.required">
+                Password is required
+            </span>
+        </div>
+        <div class="row">
+            <!-- email -->
+            <div class="col-lg-6 col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" autocomplete="off" ngModel required
+                    #email="ngModel">
+            </div>
+            <!-- validation for email -->
+            <span class="text-danger" *ngIf="(email.touched || formRef.submitted) && email.errors?.required">
+                Email is required
+            </span>
+
+            <!-- conatct -->
+            <div class="col lg-6 col-md-6">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="number" name="contact" id="contact" class="form-control" ngModel>
+            </div>
+        </div>
+
+        <!-- Address -->
+        <div class="col-12">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" name="address" id="address" class="form-control" required ngModel #address="ngModel">
+        </div>
+
+        <div class="row">
+            <!-- city -->
+            <div class="col-lg-4 col-md-4">
+                <label for="city" class="form-label">City</label>
+                <select name="city" id="city" class="form-select" ngModel #city="ngModel">
+                    <option value=""></option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Banglore">Banglore</option>
+                </select>
+            </div>
+
+            <!-- state -->
+            <div class="col-lg-4 col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select name="state" id="state" class="form-select" ngModel #state="ngModel">
+                    <option value=""></option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Tamilnadu">Tamilnadu</option>
+                    <option value="Karnataka">Karnataka</option>
+                </select>
+            </div>
+            <!-- validation for state -->
+            <span class="text-danger" *ngIf="(state.touched || formRef.submitted) && state.city?.required">
+                State is required
+            </span>
+
+
+            <!-- pincode -->
+            <div class="col-lg-4 col-md-4 pb-2">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input type="number" name="pc" id="pincode" class="form-control" ngModel required>
+            </div>
+        </div>
+        <div class="col-12 pt-2">
+            <input type="file" class="form-control" (change)="incomingfile($event)" name="photo" accept='image/*'
+                placeholder="Upload file">
+        </div>
+        <!-- register Button -->
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary ">Register</button>
+        </div>
+    </form>
+</div>
